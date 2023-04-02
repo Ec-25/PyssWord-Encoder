@@ -1,7 +1,9 @@
 import codex as cdx
+from gui import window
 from random import randint
 
-def menu()->int:
+
+def menu() -> int:
     '''
     Interfaz Grafica Consola con retorno de opcion elejida.
     '''
@@ -28,7 +30,7 @@ def menu()->int:
     return int(opc)
 
 
-def app()->None:
+def app() -> None:
     '''
     Ejecucion de App Principal.
     '''
@@ -41,17 +43,23 @@ def app()->None:
         elif opc == 1:
             decoded = input("Ingrese la Contraseña a Codificar:\t")
             encoded = cdx.encode(decoded)
-            print('Su Contraseña >>',encoded,'<<')
+            print('Su Contraseña |', encoded, '|')
             del decoded, encoded
 
         else:
             encoded = input("Ingrese la Contraseña Codificada:\t")
             decoded = cdx.decode(encoded)
-            print('Su Contraseña >>',decoded,'<<')
+            print('Su Contraseña >>', decoded, '<<')
             del decoded, encoded
 
 
-def tests()->None:
+def gui() -> None:
+    # Start the window event loop
+    window.mainloop()
+    return
+
+
+def tests() -> None:
     '''
     Ejecucion de Pruebas Automatizadas.
     '''
@@ -89,10 +97,12 @@ def tests()->None:
 
         # Comprobacion
         if string != decoded:
-            exit("ERROR x Invalid Conjunt")
+            exit(f"ERROR x Invalid Conjunt {string} || {decoded}")
 
         id += 1
 
+
 if __name__ == '__main__':
-    app()
+    # app()
     # tests()
+    gui()
